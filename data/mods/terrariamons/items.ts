@@ -2,7 +2,7 @@ export const Items: {[itemid: string]: ModdedItemData} = {
 brokenherosword: {
 		name: "Broken Hero Sword",
 		spritenum: 28,
-		shortDesc: "If held by Shadow or Hallowed, reverts them to their Ancient formes, and powers up their swords.",
+		shortDesc: "Reverts Shadow and Hallowed to their Ancient formes.",
 		onSwitchIn(pokemon) {
 			if (pokemon.isActive && pokemon.baseSpecies.name === 'Shadow') {
 				this.queue.insertChoice({choice: 'runPrimal', pokemon: pokemon});
