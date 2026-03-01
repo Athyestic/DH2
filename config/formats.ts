@@ -4663,6 +4663,24 @@ export const Formats: FormatList = [
 		banlist: ['Uber'],
 	},
 	{
+		name: "[Gen 9] Terrariamons",
+		desc: ["<b>Terrariamons<b>- A solomod that interprets every full armor set from the game Terraria as Pokemon."],
+		ruleset: ['Standard NatDex', 'Terastal Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Species Clause', 'Data Mod', 'Mega Data Mod', 'Z-Move Clause'],
+		mod: 'terrariamons',
+		teambuilderFormat: 'National Dex',
+		banlist: [],
+		onValidateTeam(team, format) {
+			let speciesTable = {};
+			let allowedTiers = ['TerrariaOU'];
+			for (const set of team) {
+				let template = this.dex.species.get(set.species);
+				if (!allowedTiers.includes(template.tier)) {
+					return [set.species + ' is not a Terraria armor.'];
+				}
+			}
+		},
+	},
+	{
 		name: "[Gen 9] The 3-3-1 Typechart",
 		desc: [
 			"<b>The 3-3-1 Typechart</b>: A solomod that gives every type 3 weaknesses, 3 resistances, and 1 immunity.",
